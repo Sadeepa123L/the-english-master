@@ -1,16 +1,17 @@
 "use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 const NAV_LINKS = [
   { label: "Home", href: "/#home" },
   { label: "Programmes", href: "/#programmes" },
-  { label: "Contact", href: "/#contact" },
 ];
 
 export default function Navbar() {
-  const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState<boolean>(false);
+  const [scrolled, setScrolled] = useState<boolean>(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -18,6 +19,10 @@ export default function Navbar() {
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  if (pathname === '/login' || pathname === '/signup') {
+    return null;
+  }
 
   return (
     <nav
@@ -57,7 +62,7 @@ export default function Navbar() {
             Log In
           </a>
           <a
-            href="/enroll"
+            href="/signup"
             className="bg-[#C9A227] hover:bg-[#B8911F] text-[#16273F] font-semibold text-[17px] px-[22px] py-[10px] rounded hover:-translate-y-[1px] transition-all duration-150 ease-in-out"
           >
             Enroll Now
@@ -120,7 +125,7 @@ export default function Navbar() {
             Log In
           </a>
           <a
-            href="/enroll"
+            href="/signup"
             className="bg-[#C9A227] text-[#16273F] font-semibold text-[15px] px-[22px] py-3 rounded text-center"
           >
             Enroll Now
