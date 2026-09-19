@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Navbar from "../components/Navbar";
+import SmoothScrolling from "../components/SmoothScrolling";
 import "./globals.css";
 
 const inter = Inter({
@@ -21,12 +22,14 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <body>
-        <div className="min-h-screen flex flex-col">
-          <Navbar />
+        <SmoothScrolling>
+          <div className="min-h-screen flex flex-col">
+            <Navbar />
           <main className="flex-1">
             {children}
           </main>
-        </div>
+          </div>
+        </SmoothScrolling>
       </body>
     </html>
   );

@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Programmes from "../components/Programmes";
+import Contact from "../components/Contact";
 
 const slides = [
   "/slide-1.jpg",
@@ -135,6 +136,7 @@ export default function Home() {
       
       {/* Other Homepage Sections */}
       <Programmes />
+      <Contact />
     </div>
   );
 }
